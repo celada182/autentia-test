@@ -55,6 +55,14 @@ public class CourseSQLRepository implements CourseRepository {
 
     @Override
     public void insert(com.autentia.test.domain.Course course) {
-
+        String query = String.format("INSERT INTO courses (id, title, professor, level, hours, active) VALUES ('%s', '%s', '%s', '%s', %d, %b)",
+                course.getId(), course.getTitle(), course.getProfessor(), course.getLevel().name(), course.getHours(), course.isActive());
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            LOGGER.log(Level.INFO, "Course inserted: " + course.toString());
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error: " + e.getMessage());
+        }
     }
 }

@@ -21,9 +21,9 @@
     </label>
     <label>Nivel
         <select name="level">
-            <option>Fácil</option>
-            <option>Intermedio</option>
-            <option>Difícil</option>
+            <option value="EASY">Fácil</option>
+            <option value="INTERMEDIATE">Intermedio</option>
+            <option value="HARD">Difícil</option>
         </select>
     </label>
     <label>Horas

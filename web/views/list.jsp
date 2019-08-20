@@ -27,7 +27,7 @@
             out.println("<tr>");
             out.println("<th>" + c.getTitle() + "</th>");
             out.println("<th>" + c.getProfessor() + "</th>");
-            out.println("<th>" + c.getLevel() + "</th>");
+            out.println("<th>" + c.getLevel().getLevel() + "</th>");
             out.println("<th>" + c.getHours() + "</th>");
             out.println("</tr>");
         }

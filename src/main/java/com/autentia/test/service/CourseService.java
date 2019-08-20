@@ -6,6 +6,7 @@ import com.autentia.test.repository.CourseRepository;
 import com.autentia.test.sql.CourseSQLRepository;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 public class CourseService {
@@ -23,11 +24,7 @@ public class CourseService {
 
     public void addCourse(String title, String professor, String level, Integer hours, boolean active) {
         try {
-            Level courseLevel = Level.fromString(level);
-            Course course = new Course("asd", true, title, professor, courseLevel.getLevel(), hours);
-            if (!active) {
-                course.setActive(false);
-            }
+            Course course = new Course(UUID.randomUUID().toString(), active, title, professor, Level.valueOf(level).name(), hours);
             this.repository.insert(course);
         } catch (IllegalArgumentException e) {
             LOGGER.log(java.util.logging.Level.SEVERE, "Invalid course level");
