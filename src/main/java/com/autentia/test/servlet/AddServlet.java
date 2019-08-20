@@ -34,7 +34,7 @@ public class AddServlet extends HttpServlet {
             String professor = req.getParameter("professor");
             String level = req.getParameter("level");
             Integer hours = Integer.valueOf(req.getParameter("hours"));
-            boolean active = Boolean.parseBoolean(req.getParameter("active"));
+            boolean active = req.getParameter("active") != null;
             if (title == null || professor == null || level == null) {
                 throw new NullPointerException("Missing course information");
             }

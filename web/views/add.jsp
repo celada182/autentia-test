@@ -7,7 +7,7 @@
 <h1>Nuevo curso</h1>
 <form method="post">
     <label>Activo
-        <input type="checkbox" name="active" value="active"/>
+        <input type="checkbox" name="active"/>
     </label>
     <label>Título
         <input type="text" name="title"/>
