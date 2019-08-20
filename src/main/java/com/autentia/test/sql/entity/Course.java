@@ -1,4 +1,4 @@
-package com.autentia.test.domain;
+package com.autentia.test.sql.entity;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ public class Course {
     private boolean active;
     private String title;
     private String professor;
-    private Level level;
+    private String level;
     private Integer hours;
 
     public Course(String id, boolean active, String title, String professor, String level, Integer hours) {
@@ -15,7 +15,7 @@ public class Course {
         this.active = active;
         this.title = title;
         this.professor = professor;
-        this.level = Level.valueOf(level);
+        this.level = level;
         this.hours = hours;
     }
 
@@ -51,11 +51,11 @@ public class Course {
         this.professor = professor;
     }
 
-    public Level getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Level level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 

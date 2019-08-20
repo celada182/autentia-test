@@ -39,6 +39,7 @@ public class AddServlet extends HttpServlet {
                 throw new NullPointerException("Missing course information");
             }
             this.service.addCourse(title, professor, level, hours, active);
+            LOGGER.log(Level.INFO, "Course " + title + " added");
             resp.sendRedirect("/catalogo");
         } catch (IllegalArgumentException e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
