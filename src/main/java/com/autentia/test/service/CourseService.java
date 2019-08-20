@@ -6,13 +6,14 @@ import com.autentia.test.domain.Level;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class CourseService {
     private final static Logger LOGGER = Logger.getLogger("CourseService");
 
-    private List<Course> courses = new ArrayList<Course>();
+    private List<Course> courses = new ArrayList<>();
 
-    CourseService() {
+    public CourseService() {
         init();
     }
 
@@ -25,12 +26,14 @@ public class CourseService {
     }
 
     public List<Course> getCourses() {
-        return this.courses;
+        return this.courses.stream()
+                .filter(Course::isActive)
+                .collect(Collectors.toList());
     }
 
     public void addCourse(String title, String professor, String level, Integer hours, boolean active) {
         try {
-            Level courseLevel = Level.valueOf(level);
+            Level courseLevel = Level.fromString(level);
             Course course = new Course(title, professor, courseLevel.getLevel(), hours);
             if (!active) {
                 course.setActive(false);

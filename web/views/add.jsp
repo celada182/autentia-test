@@ -5,30 +5,31 @@
 </head>
 <body>
 <h1>Nuevo curso</h1>
-<form>
-    <label id="active">Activo
-        <input type="checkbox"/>
+<form method="post">
+    <label>Activo
+        <input type="checkbox" name="active" value="active"/>
+    </label>
+    <label>Título
+        <input type="text" name="title"/>
     </label>
     <label>Profesor
-        <select>
+        <select name="professor">
             <option>Profesor 1</option>
             <option>Profesor 2</option>
             <option>Profesor 3</option>
         </select>
     </label>
-    <label>Título
-        <input type="text"/>
-    </label>
     <label>Nivel
-        <select>
+        <select name="level">
             <option>Fácil</option>
             <option>Intermedio</option>
             <option>Difícil</option>
         </select>
     </label>
     <label>Horas
-        <input type="number" min="0"/>
+        <input type="number" min="0" name="hours"/>
     </label>
+    <button type="submit">Añadir</button>
 </form>
 </body>
 </html>
