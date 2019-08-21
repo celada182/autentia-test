@@ -11,4 +11,12 @@
         <servlet-name>application</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>api</servlet-name>
+        <servlet-class>com.autentia.test.servlet.ApiServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>api</servlet-name>
+        <url-pattern>/api/</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -46,8 +46,8 @@ public class CourseSQLRepository implements CourseRepository {
                 courses.add(course);
             }
             statement.close();
-        } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error: " + e.getMessage());
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, e.getClass().toString() + ": " + e.getMessage());
         }
         LOGGER.log(Level.INFO, "Courses retrieved: " + courses.toString());
         return adapter.adapt(courses);
