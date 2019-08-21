@@ -2,7 +2,6 @@ package com.autentia.test.servlet;
 
 import com.autentia.test.service.CourseService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,24 +10,32 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AddServlet extends HttpServlet {
-    private final static Logger LOGGER = Logger.getLogger("AddServlet");
+public class ApplicationServlet extends HttpServlet {
+    private final static Logger LOGGER = Logger.getLogger("ApplicationServlet");
 
     private CourseService service;
 
-    public AddServlet() {
+    public ApplicationServlet() {
         super();
         this.service = new CourseService();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/add.jsp");
-        requestDispatcher.forward(req, resp);
+        switch (req.getRequestURI()) {
+            case "/nuevo":
+                req.getRequestDispatcher("views/add.jsp").forward(req, resp);
+                break;
+            case "/catalogo":
+            default:
+                req.setAttribute("courses", service.getCourses());
+                req.getRequestDispatcher("views/list.jsp").forward(req, resp);
+                break;
+        }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
             String title = req.getParameter("title");
             String professor = req.getParameter("professor");
